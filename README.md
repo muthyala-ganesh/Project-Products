@@ -1,0 +1,1 @@
+this is a project where u can send products details to store in database and after storing products data u can retrive specific product data by entering product id or in product form u will see two options, one is to delete specific product details and another one is to edit specific product details.
