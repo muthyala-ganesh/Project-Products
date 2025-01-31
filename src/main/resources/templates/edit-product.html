@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 50px;
+        }
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+        .form-container label {
+            font-size: 16px;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .form-container input[type="text"]:focus,
+        .form-container input[type="number"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        .form-container .form-group {
+            margin-bottom: 20px;
+        }
+        .form-container .form-group:last-child {
+            margin-bottom: 0;
+        }
+        p{
+        color: red;
+        }
+    </style>
+</head>
+<body>      
+
+<h2>Edit Product Information</h2>
+
+<div class="form-container">
+    <form th:action="@{'/edit/'+${id}}" th:object="${product}" method="post">
+
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" th:field="*{name}" id="name"/>
+        <p th:if="${validationErrorsObj != null}" th:text="${validationErrorsObj['name']}" ></p>
+    </div>
+
+    <div class="form-group">
+        <label for="brand">Brand:</label>
+        <input type="text" th:field="*{brand}" id="brand"/>
+        <p th:if="${validationErrorsObj != null}" th:text="${validationErrorsObj['brand']}" ></p>
+    </div>
+
+    <div class="form-group">
+        <label for="madeIn">Made In:</label>
+        <input type="text" th:field="*{madeIn}" id="madeIn" />
+        <p th:if="${validationErrorsObj != null}" th:text="${validationErrorsObj['madeIn']}" ></p>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="number" th:field="*{price}" id="price" step="0.01" />
+        <p th:if="${validationErrorsObj != null}" th:text="${validationErrorsObj['price']}" ></p>
+    </div>
+
+    <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" th:field="*{quantity}" id="quantity" />
+        <p th:if="${validationErrorsObj != null}" th:text="${validationErrorsObj['quantity']}" ></p>
+    </div>
+
+    <div class="form-group">
+        <label for="discountRate">Discount Rate:</label>
+        <input type="number" th:field="*{discountRate}" id="discountRate" step="0.01" />
+        <p th:if="${validationErrorsObj != null}" th:text="${validationErrorsObj['discountRate']}" ></p>
+    </div>
+
+    <input type="submit" value="Update">
+    
+    </form>
+</div>
+
+</body>
+</html> 

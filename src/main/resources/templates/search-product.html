@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product by ID</title>
+    <style>
+        /* General body and layout */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Container for the form */
+        .form-container {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Form label */
+        label {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 10px;
+            display: block;
+            text-align: left;
+        }
+
+        /* Input field style */
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #fff;
+        }
+
+        /* Submit button */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Error message styling */
+        .no-product {
+            background-color: #fff3f3;
+            color: #dc3545;
+            padding: 0px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+       /* Back to home button */ 
+ .form a {
+   
+    color:white ;
+    background-color: #4682b4 ;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 4px;
+    font-size: 16px;
+        margin: 0 10px;
+}
+
+.form a:hover {
+    background-color:hsl(207, 59%, 42%);
+    text-decoration: none;
+}
+
+    .form {
+    text-align: center;
+        padding: 10px;
+    }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Search Product by ID</h2>
+    
+    <!-- Form for searching a product by its ID -->
+      <form th:action="@{/searchbyid}" method="post">
+        <label for="id">Enter Product ID:</label>
+        <input type="number" name="id" id="id" required placeholder="Enter product ID">
+        <button type="submit">Search</button> 
+      
+        <!-- Display message if product is not found -->
+        <div th:if="${product == null}" class="no-product">
+        <p th:text="${message}">Product not found. Please try again.</p>
+        </div>
+        <div class="form">
+        <a href="/productform">Back To Form</a>
+        </div>
+    </form>
+  </div>
+</body>
+</html>

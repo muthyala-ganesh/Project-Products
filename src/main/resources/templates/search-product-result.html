@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Product Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .product-details, .no-product {
+            margin: 20px 0;
+        }
+
+        .product-details p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .product-details strong {
+            color: #555;
+        }
+
+        .no-product p {
+            color: #ff4d4d;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .product-details span {
+            font-weight: bold;
+        }
+      footer a {
+   
+    color:white ;
+    background-color: #4682b4 ;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+footer a:hover {
+    background-color:hsl(207, 59%, 42%);
+    text-decoration: none;
+}
+
+    footer {
+    text-align: center;
+        padding: 10px;
+    }
+
+  
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Display Product Details if product is found -->
+    <div th:if="${product != null}" class="product-details">
+        <h1>Product Details</h1>
+        <p><strong>ID:</strong> <span th:text="${product.id}"></span></p>
+        <p><strong>Name:</strong> <span th:text="${product.name}"></span></p>
+        <p><strong>Made In:</strong> <span th:text="${product.madeIn}"></span></p>
+        <p><strong>Brand:</strong> <span th:text="${product.brand}"></span></p>
+        <p><strong>Price:</strong> <span th:text="${product.price}"></span></p>
+        <p><strong>Quantity:</strong> <span th:text="${product.quantity}"></span></p>
+        <p><strong>Discount Rate:</strong> <span th:text="${product.discountRate}"></span></p>
+        <p><strong>Tax Price:</strong> <span th:text="${product.taxPrice}"></span></p>
+        <p><strong>Discount Price:</strong> <span th:text="${product.discountPrice}"></span></p>
+        <p><strong>Offer Price:</strong> <span th:text="${product.offerPrice}"></span></p>
+        <p><strong>Final Price:</strong> <span th:text="${product.finalPrice}"></span></p>
+        <p><strong>Stock Value:</strong> <span th:text="${product.stockValue}"></span></p>
+    </div>
+
+    <!-- Display message if product is not found -->
+    <div th:if="${product == null}" class="no-product">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- Link to go back to the search form -->
+    <footer class="button">
+    <a href="/searchform">Back to Search</a>
+    <a href="/productform">Back to Form</a>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products-List</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Table styling */
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            transition: 0.3s ease;
+        }
+
+        /* Action buttons styling */
+        td a {
+            color: #fff;
+            background-color: #28a745;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        td a:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        td a.delete {
+            background-color: #dc3545;
+        }
+
+        td a.delete:hover {
+            background-color: #c82333;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+ footer a {
+   
+    color:white ;
+    background-color: #4682b4 ;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+footer a:hover {
+    background-color:hsl(207, 59%, 42%);
+    text-decoration: none;
+}
+
+    footer {
+    text-align: center;
+        padding: 10px;
+    }
+
+    footer a {
+        font-size: 16px;
+        margin: 0 10px;
+    }
+       
+    </style>
+</head>
+<body>
+
+<h1>Products List</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>MadeIn</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Discount Rate</th>
+            <th>Tax Price</th>
+            <th>Discount Price</th>
+            <th>Offer Price</th>
+            <th>Final Price</th>
+            <th>Stock Value</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.brand}"></td>
+            <td th:text="${product.madeIn}"></td>
+            <td th:text="${product.price}"></td>
+            <td th:text="${product.quantity}"></td>
+            <td th:text="${product.discountRate}"></td>
+            <td th:text="${product.taxPrice}"></td>
+            <td th:text="${product.discountPrice}"></td>
+            <td th:text="${product.offerPrice}"></td>
+            <td th:text="${product.finalPrice}"></td>
+            <td th:text="${product.stockValue}"></td>
+            <td>
+    <a th:href="@{/delete/{id}(id=${product.id})}" class="delete">Delete</a>
+    <a th:href="@{'/edit/'+${product.id}}">Edit</a>
+    </td>
+        </tr>
+    </tbody>
+</table>
+<footer><a href="/productform">Back To Form</a></footer>
+</body>
+</html>
